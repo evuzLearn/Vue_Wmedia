@@ -1,0 +1,11 @@
+{
+  "name": "curso_wmedia",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/evuzLearn/Vue_Wmedia.git",
+  "author": "evuz <jesus_jgb_45@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "browser-sync start -s ./ -f index.html **/**"
+  }
+}

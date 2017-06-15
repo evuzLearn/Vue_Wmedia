@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js</title>
+</head>
+
+<body>
+    <main>
+        <h2>Ejemplo sencillo</h2>
+        <ul>
+            <li v-for="dia in laborales">{{ dia }}</li>
+        </ul>
+        <h2>Ejemplo array de objeto</h2>
+        <ul>
+            <li v-for="(tarea, index) in tareas">
+                {{ index + 1 }} - {{ tarea.nombre }}
+                <small>({{ tarea.prioridad }})</small>
+            </li>
+        </ul>
+        <h2>Ejemplo Objeto</h2>
+        <ul>
+            <li v-for="(value, key, index) in persona">
+                {{ index }} - {{ key }}: {{ value }}
+            </li>
+        </ul>
+    </main>
+    <script src="https://unpkg.com/vue@2.3.3"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
