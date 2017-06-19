@@ -10,9 +10,10 @@
 
 <body>
     <main>
+        <h1> {{ mensajeAlReves }}</h1>
         <ul>
-            <li v-for="tarea in tareas">
-                {{ tarea }}
+            <li v-for="tarea in tareasPorAntiguedad">
+                {{ tarea.descripcion }}
             </li>
             <h2>Eventos</h2>
             <input type="text" placeholder="Introduce tu tarea" v-model="nuevaTarea" v-on:keyup.enter="agregarTarea">
