@@ -1,0 +1,11 @@
+{
+  "name": "vue_null",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/evuzlearn/vue_Wmedia",
+  "author": "evuz",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.3.4"
+  }
+}
