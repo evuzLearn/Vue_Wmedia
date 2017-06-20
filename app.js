@@ -1,62 +1,31 @@
-Vue.component('game-header', {
-    template: '<h1>Video Games</h1>'
-});
-
-Vue.component('game-add', {
-    template: `
-        <div>
-            <input type="text" v-model="titleGame" />
-            <button @click="emitNewGame">Añadir</button>
-        </div> 
-    `,
-    data: function () {
-        return {
-            titleGame: null
-        }
+const app = new Vue({
+    el: '#app',
+    data: {
+        user: { name: null, password: null }, 
+        urlPasswordChange: 'http://localhost:8080',
+        errors: []
+    },
+    computed: {
+         isFormEmpty: function () {
+             return !(this.user.name && this.user.password);
+         }
     },
     methods: {
-        emitNewGame: function () {
-            if (this.titleGame) {
-                this.$emit('new', { title: this.titleGame });
-                this.titleGame = null;
+        onLogin: function () {
+            this.errors = [];
+
+            if (this.user.name.length < 6) {
+                this.errors.push('El nombre de usuario tiene que tener al menos 6 caracteres');
+            }
+
+            if (this.user.password.length < 6) {
+                this.errors.push('La contraseña tiene que tener al menos 6 caracteres');
             }
         }
     },
-});
-
-Vue.component('game-list', {
-    props: ['games'],
-    template: `
-        <ol>
-            <game-item v-for="item in games" :game="item" :key="item.id"></game-item>
-        </ol>
-    `
-});
-
-Vue.component('game-item', {
-    props: ['game'],
-    template: '<li>{{ game.title }}</li>'
-});
-
-const app = new Vue({
-    el: '#app',
-    template: `
-        <div class="view">                              
-            <game-header></game-header>                  
-            <game-add @new="addNewGame"></game-add>     
-            <game-list v-bind:games="games"></game-list>
-        </div>
-    `,
-    data: {
-        games: [
-            { title: 'ME: Andromeda' },
-            { title: 'Fifa 2017' },
-            { title: 'League of Legend' }
-        ]
-    },
-    methods: {
-        addNewGame: function (game) {
-            this.games.push(game);
+    filters: {
+        uppercase: function (data) {
+            return data && data.toUpperCase();
         }
     }
-})
+});
