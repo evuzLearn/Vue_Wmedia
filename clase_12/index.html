@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js</title>
+</head>
+
+<body>
+    <main>
+        <h1>{{ title}}</h1>
+        <generar-ganador :listado="personas" inline-template>
+            <div className="generar-ganador">
+                <template v-if="ganador">
+                    <h3>El ganador es {{ ganador }}</h3>
+                </template>
+                <h3>Participantes</h3>
+                <ul>
+                    <li v-for="participante in participantes">{{ participante }}</li>
+                </ul>
+                <button @click="elegirGanador()" v-if="!ganador">Elegir ganador</button>
+            </div>
+        </generar-ganador>
+    </main>
+
+    <!--Template con tag-->
+    <template id="elegirGanadorTemplate">
+        <div className="generar-ganador">
+            <template v-if="ganador">
+                <h3>El ganador es {{ ganador }}</h3>
+            </template>
+            <h3>Participantes</h3>
+            <ul>
+                <li v-for="participante in participantes">{{ participante }}</li>
+            </ul>
+            <button @click="elegirGanador()" v-if="!ganador">Elegir ganador</button>
+        </div>
+    </template>
+    <script src="https://unpkg.com/vue@2.3.3"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
