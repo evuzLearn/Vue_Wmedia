@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js</title>
+    <link href="https://unpkg.com/animate.css@3.5.1/animate.min.css" rel="stylesheet" type="text/css">
+    <style>
+        /* Transiciones */
+
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 1s;
+        }
+
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+        /* Animaciones */
+
+        .bounce-enter-active {
+            animation: bounce-in .5s;
+        }
+
+        .bounce-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>{{ title }}</h1>
+        <!--Transiciones-->
+        <input type="button" @click="toogleMostrar()" value="Mostrar/Ocultar">
+        <transition name="fade" appear>
+            <h4 v-if="mostrar">{{ mensajes.transicion }}</h4>
+        </transition>
+        <!--Animación-->
+        <transition name="bounce">
+            <h4 v-if="mostrar">{{ mensajes.animacion }}</h4>
+        </transition>
+        <!--Animate.css-->
+        <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutUp">
+            <h4 v-if="mostrar">{{ mensajes.animationCustom }}</h4>
+        </transition>
+        <!--Transicion entre elementos-->
+        <transition name="fade" mode="out-in">
+            <h4 v-if="mostrar" key="if">{{ mensajes.transicion }}</h4>
+            <h4 v-else key="else">{{ mensajes.entreElementos }}</h4>
+        </transition>
+    </main>
+    <script src="https://unpkg.com/vue@2.3.3"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
